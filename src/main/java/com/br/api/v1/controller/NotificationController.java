@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.br.api.v1.model.NotificationModel;
 import com.br.domain.model.Notification;
-import com.br.domain.service.NotificationService;
+import com.br.domain.service.impl.NotificationServiceImpl;
 import io.swagger.annotations.Api;
 
 @Api
@@ -23,13 +23,14 @@ import io.swagger.annotations.Api;
 public class NotificationController {
 	
 	@Autowired
-	NotificationService notificationService;
+	NotificationServiceImpl notificationServiceImpl;
 	
-	@PostMapping("/sending-email")
-	public ResponseEntity<Notification> sendingEMail(@RequestBody @Valid NotificationModel notificationModel){
+	@PostMapping("/registry-user")
+	public ResponseEntity<Notification> registruUser(@RequestBody @Valid NotificationModel notificationModel) {
 		Notification notification = new Notification(); 
 		BeanUtils.copyProperties(notificationModel, notification);
-		notificationService.sendEmail(notification);
+		notificationServiceImpl.sendEmail(notification, notificationModel.getUserName(),
+				notificationModel.getUserLogin(), notificationModel.getUserPassword());
 		return new ResponseEntity<>(notification, HttpStatus.CREATED);
 	}
 

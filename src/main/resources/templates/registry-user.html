@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .container-sub {
+            max-width: 100%;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 45px;
+        }
+
+        p {
+            color: #555;
+        }
+
+        .header {
+            color: white;
+            background-color: #333;
+        }
+
+        .column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    box-sizing: border-box;
+    }
+
+    .column.right {
+        text-align: right;
+    }
+
+        .clear {
+            clear: both;
+        }
+
+        .footer {
+            margin-top: 20px;
+            text-align: left;
+            color: #888;
+            border-bottom: 1px solid #000000;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="header">
+        <div class="container-sub">
+            <div class="column">
+                <b>Sistema de gestão documental AmazonSP.</b>
+                <h1>Ready to create documents?</h1>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="container-sub">
+        <p>Seja muito bem vindo(a), ${USER_NAME}. Agora tu faz parte do sistema de gestão documental AmazonSP. Abaixo segue as informações de acesso ao sistema:</p>
+        <p>LOGGIN: <b>${USER_LOGIN}</b></p>
+        <p>PASSWORD: <b>${USER_PASSWORD}</b></p>
+    </div>
+
+    <div class="container-sub">
+        <div class="footer">
+            <p>Esperamos tornar seu trabalho mais feliz com o nosso trabalho!</p>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

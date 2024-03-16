@@ -1,6 +1,7 @@
 package com.br.domain.model;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -10,7 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import com.br.api.exceptionhandler.StatusEmail;
+import lombok.Builder;
 import lombok.Data;
+import lombok.Singular;
 
 
 @Data

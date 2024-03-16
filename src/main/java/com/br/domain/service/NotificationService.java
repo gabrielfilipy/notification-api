@@ -1,42 +1,30 @@
 package com.br.domain.service;
-import java.time.LocalDateTime;
 
-import javax.transaction.Transactional;
+import lombok.*;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailException;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.stereotype.Service;
+import javax.validation.constraints.NotNull;
+import java.util.*;
 
-import com.br.Infrastructure.notify.email.SmtpEmail;
-import com.br.api.exceptionhandler.StatusEmail;
-import com.br.domain.model.Notification;
-import com.br.domain.repository.NotificationRepository;
+public interface NotificationService {
 
-@Service
-public class NotificationService {
-	
-	@Autowired
-	NotificationRepository notificationRepository;
-	
-	@Autowired
-	SmtpEmail smtpEmail;
-	
+    void enviar(Message message);
 
-	@Transactional
-	public Notification sendEmail(Notification notificationModel) {
-		notificationModel.setSendDateEmail(LocalDateTime.now());
-		try { 
-			smtpEmail.enviar(notificationModel);
-			notificationModel.setStatusEmail(StatusEmail.SENT);
-		} catch (MailException e) {
-			e.printStackTrace();
-			notificationModel.setStatusEmail(StatusEmail.ERROR);
-		} finally {
-			return notificationRepository.save(notificationModel);
-		}
-	}
+    @Getter
+    @Builder
+    class Message {
 
+        @Singular
+        private Set<String> destinatarios;
+
+        @NotNull
+        private String assunto;
+
+        @NotNull
+        private String corpo;
+
+        @Singular("variavel")
+        private Map<String, Object> variaveis;
+
+    }
 
 }

@@ -3,6 +3,9 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
+import lombok.Singular;
+
+import java.util.Map;
 
 @Data
 public class NotificationModel {
@@ -21,8 +24,21 @@ public class NotificationModel {
       @NotBlank
       @NotNull
 	  private String subject;
-      @NotBlank
-      @NotNull
-	  private String text;
+      private String text;
+
+    @Singular("variavel")
+    private Map<String, Object> variaveis;
+
+    @NotBlank
+    @NotNull
+    private String userLogin;
+
+    @NotBlank
+    @NotNull
+    private String userPassword;
+
+    @NotBlank
+    @NotNull
+    private String userName;
 
 }
