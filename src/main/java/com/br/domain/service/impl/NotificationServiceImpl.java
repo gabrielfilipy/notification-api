@@ -1,5 +1,4 @@
 package com.br.domain.service.impl;
-import java.time.LocalDateTime;
 
 import javax.transaction.Transactional;
 
@@ -23,25 +22,25 @@ public class NotificationServiceImpl {
 	SmtpEmail smtpEmail;
 
 	@Transactional
-	public Notification sendEmail(Notification notificationModel, String userName, String userLogin, String userPassword) {
-		notificationModel.setSendDateEmail(LocalDateTime.now());
+	public Notification sendEmail(Notification notification, String userName, String userLogin, String userPassword) {
 		try {
-
+			notification.setAssunto("Cadastro do usuário: " + userName.toUpperCase());
 			var message = Message.builder()
-					.assunto(notificationModel.getSubject())
+					.assunto(notification.getAssunto())
 					.corpo("registry-user.html")
 					.variavel("USER_NAME", userName)
 					.variavel("USER_LOGIN", userLogin)
 					.variavel("USER_PASSWORD", userPassword)
-					.destinatario(notificationModel.getEmailTo()).build();
+					.destinatario(notification.getDestinatario()).build();
 
+			notification.setCorpo(message.getCorpo());
 			smtpEmail.enviar(message);
-			notificationModel.setStatusEmail(StatusEmail.SENT);
+			notification.setStatus(StatusEmail.SENT);
 		} catch (MailException e) {
 			e.printStackTrace();
-			notificationModel.setStatusEmail(StatusEmail.ERROR);
+			notification.setStatus(StatusEmail.ERROR);
 		} finally {
-			return notificationRepository.save(notificationModel);
+			return notificationRepository.save(notification);
 		}
 	}
 

@@ -1,16 +1,12 @@
 package com.br.Infrastructure.notify.email;
 
-import com.br.api.v1.model.NotificationModel;
 import com.br.domain.service.NotificationService;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
+import org.springframework.beans.factory.annotation.*;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
-import com.br.domain.model.Notification;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
 import javax.mail.internet.MimeMessage;
