@@ -2,15 +2,11 @@ package com.br.domain.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-
 import javax.persistence.*;
 import javax.validation.constraints.*;
-
 import org.hibernate.annotations.CreationTimestamp;
-
 import com.br.api.exceptionhandler.StatusEmail;
 import com.fasterxml.jackson.annotation.JsonInclude;
-
 import lombok.*;
 
 @Getter

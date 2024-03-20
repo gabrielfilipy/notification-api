@@ -1,7 +1,6 @@
 package com.br.domain.service;
 
 import lombok.*;
-
 import javax.validation.constraints.NotNull;
 import java.util.*;
 
