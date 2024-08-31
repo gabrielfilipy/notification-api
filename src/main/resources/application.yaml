@@ -13,12 +13,17 @@ spring:
           starttls:
             enable: true
   datasource:
-    url: jdbc:mysql://localhost:3306/notification-api?createDatabaseIfNotExist=true&serverTimezone=UTC
-    username: root
-    password:
+    url: jdbc:postgresql://localhost:5432/notification-api?createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: postgres
+    password: admin
   jpa:
     hibernate:
-      ddl-auto: update
+      #ddl-auto: update
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      
+flyway:
+  locations: classpath:db/migration
+  baseline-on-migrate: true
       
 
      
